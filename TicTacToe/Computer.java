@@ -27,10 +27,10 @@ public class Computer {
 
 		if( !checkIfWin() ) 
 			if( !checkIfLock() ) 
-				if( !checkIfFork() ) 
+//				if( !checkIfFork() ) 
 					if( !checkIfBlock() ) 
-						if( !checkIfCenter() ) 
-//							if( !checkIfOpposite() ) 
+//						if( !checkIfOpposite() ) 
+							if( !checkIfCenter() ) 
 								if( !checkIfCorner() ) 
 									found = checkIfSide();
 //										found = checkIfFree();
@@ -98,7 +98,7 @@ public class Computer {
 			}
 		}
 
-		if( (cell[0][2]==piece && cell[2][0]==piece) || (cell[0][0]==piece && cell[2][2]==piece) && cell[1][1]=="free" ) {
+		if( ((cell[0][2]==piece && cell[2][0]==piece) || (cell[0][0]==piece && cell[2][2]==piece)) && cell[1][1]=="free" ) {
 			row = 1;
 			column = 1;
 			return true;
@@ -167,7 +167,7 @@ public class Computer {
 			}
 		}
 
-		if( (cell[0][2]==opponent && cell[2][0]==opponent) || (cell[0][0]==opponent && cell[2][2]==opponent) && cell[1][1]=="free" ) {
+		if( ((cell[0][2]==opponent && cell[2][0]==opponent) || (cell[0][0]==opponent && cell[2][2]==opponent)) && cell[1][1]=="free" ) {
 			row = 1;
 			column = 1;
 			return true;
@@ -183,6 +183,21 @@ public class Computer {
 	
 	/* Blocking an opponent's fork: If there is a configuration where the opponent can fork, you must block that fork. */
 	private boolean checkIfBlock() {
+		
+		if( cell[0][2]==opponent && cell[2][0]==opponent && cell[1][1]==piece ) {
+			boolean temp = checkIfSide();
+			return true;
+		}
+		if( cell[0][0]==opponent && cell[2][2]==opponent && cell[1][1]==piece ) {
+			boolean temp = checkIfSide();
+			return true;
+		}
+
+		return false;
+	}
+
+	/* Opposite corner: If the opponent is in the corner, you play the opposite corner. */
+	private boolean checkIfOpposite() {
 		return false;
 	}
 	
@@ -198,11 +213,6 @@ public class Computer {
 		return false;
 	}
 	
-	/* Opposite corner: If the opponent is in the corner, you play the opposite corner. 
-	private boolean checkIfOpposite() {
-		return false;
-	}*/
-
 	/* Empty corner: You play in a corner square. */
 	private boolean checkIfCorner() {
 

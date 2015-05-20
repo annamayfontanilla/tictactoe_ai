@@ -25,10 +25,12 @@ public class Board {
 
 	protected void check() {
 
+		full = true;
+
 		//check if full
 		for(int i=0; i<3; i++) {
 			for(int j=0; j<3; j++) {
-				if( cell[i][j]!="free" ) {
+				if( cell[i][j]=="free" ) {
 					full = false;
 				}
 			}

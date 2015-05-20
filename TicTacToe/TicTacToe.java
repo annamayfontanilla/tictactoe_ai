@@ -1,6 +1,7 @@
 /*
 sources:
 	xo:https://d13yacurqjgara.cloudfront.net/users/107759/screenshots/901671/xo.png
+	http://stackoverflow.com/questions/8287084/tic-tac-toe-perfect-ai-algorithm-deeper-in-create-fork-step
 */
 
 import java.util.*;
@@ -204,9 +205,7 @@ public class TicTacToe implements ActionListener {
 				}
 
 //				endGame = board.check();
-			}
-
-			
+			}			
 		}
 	}
 
